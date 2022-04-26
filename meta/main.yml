@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Vehbi Sinan Tunalioglu
+  description: An opinionated host setup role
+  company: Telostat Pte Ltd
+  issue_tracker_url: https://github.com/telostat/ansible-role-teloshost/issues
+  license: BSD-3-Clause
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - "docker"
+    - "monitoring"
+    - "system"
+    - "ubuntu"
+dependencies:
+  - role: "geerlingguy.docker"

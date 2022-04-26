@@ -1,0 +1,39 @@
+- name: "Attempt to get ordinary user name if it exists"
+  command: "id --name --user {{ teloshost_ordinary_user_id }}"
+  register: "maybe_ordinary_user_name"
+  ignore_errors: true
+
+- set_fact:
+    telosuser: "{{ maybe_ordinary_user_name.stdout }}"
+
+- name: "Create ordinary user if it does not exist"
+  when: not telosuser
+  block:
+    - name: "Create ordinary user group if it does not exist"
+      become: true
+      ansible.builtin.group:
+        name: "{{ teloshost_ordinary_user_name }}"
+        state: "present"
+
+    - name: "Create ordinary user"
+      become: true
+      ansible.builtin.user:
+        name: "{{ teloshost_ordinary_user_name }}"
+        comment: "Ordinary User"
+        uid: "{{ teloshost_ordinary_user_id }}"
+        group: "{{ teloshost_ordinary_user_name }}"
+  
+- name: "Get ordinary user name"
+  command: "id --name --user {{ teloshost_ordinary_user_id }}"
+  register: "maybe_ordinary_user_name"
+
+- set_fact:
+    telosuser: "{{ maybe_ordinary_user_name.stdout }}"
+
+- name: "Ensure groups for the ordinary user"
+  become: true
+  ansible.builtin.user:
+    name: "{{ telosuser }}"
+    groups:
+      - "sudo"
+    append: true

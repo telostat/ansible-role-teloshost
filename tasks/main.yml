@@ -1,0 +1,17 @@
+- name: "Configure Host"
+  include_tasks: "01_configure_host.yml"
+
+- name: "Install Software"
+  include_tasks: "02_install_software.yml"
+
+- name: "Configure sudo"
+  include_tasks: "03_configure_sudo.yml"
+
+- name: "Setup Ordinary User"
+  include_tasks: "04_setup_ordinary_user.yml"
+
+- name: "Add Authorized SSH Keys"
+  include_tasks: "05_authorized_keys.yml"
+
+- name: "Install and Setup Docker"
+  include_tasks: "06_setup_docker.yml"

@@ -1,0 +1,7 @@
+- name: "Update Authorized SSH Keys"
+  become: true
+  authorized_key:
+    user: "{{ telosuser }}"
+    state: "present"
+    key: "https://github.com/{{ item }}.keys"
+  with_items: "{{ teloshost_devops }}"

@@ -1,0 +1,9 @@
+## Role variables:
+teloshost_ordinary_user_id: 1000
+teloshost_ordinary_user_name: "patron"
+
+## Playbook variables:
+devops:
+  - "<GitHub username 1>"
+  - "<GitHub username 2>"
+  - "..."

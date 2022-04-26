@@ -1,0 +1,19 @@
+- name: "Upgrade installed apt packages"
+  become: true
+  apt:
+    upgrade: "safe"
+    update_cache: true
+
+- name: "Install required packages"
+  become: true
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - "curl"
+      - "htop"
+      - "mc"
+      - "moreutils"
+      - "rsync"
+      - "screen"
+      - "vim"

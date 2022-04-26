@@ -1,0 +1,23 @@
+- name: "Install and Setup Docker"
+  when: teloshost_docker
+  block:
+    - name: "Run 3rd-party docker role"
+      include_role:
+        name: "geerlingguy.docker"
+      vars:
+        ansible_become: true
+
+    - name: "Add ordinary user to docker group"
+      become: true
+      ansible.builtin.user:
+        name: "{{ telosuser }}"
+        groups:
+          - "docker"
+        append: true
+
+    - name: "Install ctop"
+      become: true
+      get_url:
+        url: "https://github.com/bcicen/ctop/releases/download/v0.7.7/ctop-0.7.7-linux-amd64"
+        dest: "/usr/local/bin/ctop"
+        mode: "755"

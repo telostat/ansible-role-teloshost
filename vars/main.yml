@@ -1,0 +1,4 @@
+teloshost_ordinary_user_id: 1000
+teloshost_ordinary_user_name: patron
+teloshost_devops: []
+teloshost_docker: false
