@@ -7,6 +7,16 @@
       vars:
         ansible_become: true
 
+    - name: Install Required Packages
+      become: true
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+          - python3-docker
+          - python3-pip
+
     - name: "Add ordinary user to docker group"
       become: true
       ansible.builtin.user:
@@ -21,3 +31,12 @@
         url: "https://github.com/bcicen/ctop/releases/download/v0.7.7/ctop-0.7.7-linux-amd64"
         dest: "/usr/local/bin/ctop"
         mode: "755"
+
+    - name: Log into DECAF Docker Registry
+      become: true
+      become_user: "{{ telosuser }}"
+      docker_login:
+        username: "{{ item.username }}"
+        password: "{{ item.password }}"
+        registry: "{{ item.registry }}"
+      loop: "{{ teloshost_docker_registries }}"
