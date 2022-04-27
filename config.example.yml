@@ -1,6 +1,13 @@
 ## Role variables:
 teloshost_ordinary_user_id: 1000
 teloshost_ordinary_user_name: "patron"
+teloshost_docker_registries:
+  - username: "username1"
+    password: "password1"
+    registry: "registry1.example.com"
+  - username: "username2"
+    password: "password2"
+    registry: "registry2.example.com"
 
 ## Playbook variables:
 devops:
