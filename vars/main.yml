@@ -3,3 +3,38 @@ teloshost_ordinary_user_name: patron
 teloshost_devops: []
 teloshost_docker: false
 teloshost_docker_registries: []
+teloshost_telegraf: true
+telegraf_agent_output:
+  - type: influxdb
+    config:
+      - urls = ["http://localhost:8086"]
+      - database = "telegraf"
+      - interval = "10s"
+      - round_interval = true
+      - metric_batch_size = 1000
+      - metric_buffer_limit = 10000
+      - collection_jitter = "0s"
+      - flush_interval = "10s"
+      - flush_jitter = "0s"
+      - precision = ""
+      - debug = false
+      - quiet = false
+      - logfile = ""
+      - hostname = "{{ inventory_hostname }}"
+      - omit_hostname = false
+telegraf_plugins_default:
+  - plugin: cpu
+    config:
+      - percpu = true
+      - totalcpu = true
+      - collect_cpu_time = false
+      - report_active = false
+  - plugin: disk
+    config:
+      - ignore_fs = ["tmpfs", "devtmpfs", "devfs", "overlay", "aufs", "squashfs"]
+  - plugin: io
+  - plugin: mem
+  - plugin: net
+  - plugin: processes
+  - plugin: swap
+  - plugin: system
