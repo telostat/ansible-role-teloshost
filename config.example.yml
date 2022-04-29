@@ -8,7 +8,13 @@ teloshost_docker_registries:
   - username: "username2"
     password: "password2"
     registry: "registry2.example.com"
-
+telegraf_agent_output:
+  - type: influxdb_v2
+    config:
+      - urls = ["http://localhost:8086"]
+      - token = "<TOKEN>"
+      - organization = "<Organization>"
+      - bucket = "<bucket>"
 ## Playbook variables:
 devops:
   - "<GitHub username 1>"
