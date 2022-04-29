@@ -15,3 +15,6 @@
 
 - name: "Install and Setup Docker"
   include_tasks: "06_setup_docker.yml"
+
+- name: "Install and Setup Telegraf"
+  include_tasks: "07_setup_telegraf.yml"
