@@ -16,3 +16,4 @@ galaxy_info:
     - "ubuntu"
 dependencies:
   - role: "geerlingguy.docker"
+  - role: "dj-wasabi.telegraf"
