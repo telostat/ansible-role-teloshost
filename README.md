@@ -75,6 +75,12 @@ ansible-galaxy install --force git+file://<absolute-path-to-this-repository>
 ansible-galaxy install --force git+https://github.com/telostat/ansible-role-teloshost
 ```
 
+Setup ansible requirements:
+
+```sh
+ansible-galaxy install -r requirements.yml
+```
+
 Copy the example configuration file:
 
 ```sh
