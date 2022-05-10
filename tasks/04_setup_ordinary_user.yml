@@ -20,6 +20,7 @@
       ansible.builtin.user:
         name: "{{ teloshost_ordinary_user_name }}"
         comment: "Ordinary User"
+        shell: "/bin/bash"
         uid: "{{ teloshost_ordinary_user_id }}"
         group: "{{ teloshost_ordinary_user_name }}"
   
