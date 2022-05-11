@@ -1,5 +1,9 @@
 # Ansible Role for Opinionated Host Setup
 
+> **DEPRECATED**
+>
+> We have moved to a cloud-init based solution.
+
 This Ansible role provides an opinionated host setup procedure.
 
 This role is not *yet* on Galaxy. You can install this from the GitHub
